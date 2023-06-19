@@ -1,0 +1,9 @@
+node --version
+git --version
+
+npm init -y                      this creates the package.json file
+
+npm install express jsonwebtoken nodemon bcrypt dotenv mongoose cors
+
+
+To run the file -----> npm start(default yh test hota h isse configure krlena)
