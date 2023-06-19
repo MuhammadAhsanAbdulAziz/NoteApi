@@ -3,26 +3,28 @@ const app = express()
 const userRouter = require("./routes/userRoute");
 const noteRouter = require("./routes/noteRoute");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const PORT = process.env.PORT || 5000;
+
+dotenv.config();
 
 app.use(express.json());
-
-app.use((req, res, next)=>{
-    console.log("HTTP Method - " + req.method + " , URL - "+ req.url);
-    next();
-});
-
+app.use(cors());
 app.use("/users",userRouter);
 app.use("/notes",noteRouter);
 
 
 app.get("/",(req,res)=>{
-    res.send("hello");
+    res.send("Notes Api from Muhammad Ahsan");
 });
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.kpyqroi.mongodb.net/")
+
+
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
-    app.listen(5000,()=>{
-        console.log("Server started on port no 5000")
+    app.listen(PORT,()=>{
+        console.log("Server started on port no "+ PORT)
     });
 })
 .catch((error)=>{
