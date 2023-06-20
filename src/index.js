@@ -14,12 +14,9 @@ app.use(cors());
 app.use("/users",userRouter);
 app.use("/notes",noteRouter);
 
-
 app.get("/",(req,res)=>{
     res.send("Notes Api from Muhammad Ahsan");
 });
-
-
 
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
