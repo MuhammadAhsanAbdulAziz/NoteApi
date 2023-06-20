@@ -4,10 +4,11 @@ const userRouter = require("./routes/userRoute");
 const noteRouter = require("./routes/noteRoute");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+dotenv.config();
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 
-dotenv.config();
+
 
 app.use(express.json());
 app.use(cors());
@@ -30,4 +31,3 @@ mongoose.connect(process.env.MONGO_URL)
 .catch((error)=>{
     console.log(error);
 });
-
